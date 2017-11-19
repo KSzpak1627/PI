@@ -56,7 +56,7 @@ function getPosts()
 </head>
 
 <body>
-<body class="home">
+<body class="log">
 
 
 
@@ -308,8 +308,9 @@ function getPosts()
 			
 			<!--1 panel - kolonie -->
 			
-						<div class="tyt"><h3>Kolonie</h3></div>
-			
+						<div class="tyt"><h3>Kolonie</h3></div></div>
+								
+		
 			<?php
 					        $myConnection= mysqli_connect("localhost","root","", "kolonie") or die ("could not connect to mysql"); 
                             $sqlCommand="SELECT * FROM kolonie WHERE `aktywnoscKol`='1'"; 
@@ -384,49 +385,54 @@ function getPosts()
 					  <!--lista uzytkowników-->
 					  
 					             
-			<?php
-			} 
-			if (isset($_SESSION['admin']) && $_SESSION['admin']) { ?>
+			
 			<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
               <div class="panel panel-default">
-                <div class="panel-heading" role="tab" id="headingOne">
+                <div class="panel-heading" role="tab" id="heading11">
                   <h4 class="panel-title">
-                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                      Lista zapisanych osób
+                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse11" aria-expanded="true" aria-controls="collapse11">
+                      Dodaj kolonie 
                     </a>
                   </h4>
                 </div>
-                <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
-                  
-                </div>              
+                <div id="collapse11" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading11">
+                  			  
+				  <div id="formularz">
+
+<form id="form2" method="post" action="log.php" style="background: #fff"> 
+
+<br />
+<input type="text" name="nazwakolonii" placeholder="Nazwa kolonii" style="width:100%"/><br />
+<br />
+<input type="text" name="organizator" placeholder="Organizator" style="width:100%"/><br />
+<br />
+<input type="text" name="datapocz" placeholder="Data początkowa" style="width:100%;"/><br />
+<br />
+<input type="text" name="datakon" placeholder="Data końcowa" style="width:100%;"/><br />
+<br />
+<textarea name="opis" cols="30" rows="10" placeholder="Opis kolonii" style="width:100%;"></textarea><br />
+<input type="submit" name="submit" style="width:100%; " value="Dodaj kolonie"/> <br />
+<input type="reset" style="width:100%; " value="Wyczyść"/><br />
+</form>
 				  
-			</div>
-			
-			
-			  </div>
+                </div>              
+				 
+			</div>			
+		  </div>
 			 
 			  
-			 
-			  
-			<!---2 tabela--->
-
-
-		
-			
 			  </div>
 			  
+			  <!----2panel---->
 			  
 			  
-			 <!----3 panel---->
+			  
+			  <!----3panel---->
+			  
+			  
+			  
+			 <!----4panel---->
 
-
-
-
-
-
-
-<!----4panel  do poprawy----> 
-			 
 			  
 	 <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
               <div class="panel panel-default">
@@ -575,7 +581,7 @@ function getPosts()
               </div>
               </div>
 				  
-				  
+				  				  
 				  <!-----dostepne polkolonie------>
 						
 			<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
@@ -840,10 +846,10 @@ function getPosts()
 				  $myConnection= mysqli_connect("localhost","root","", "kolonie") or die ("could not connect to mysql"); 
 					$guery=mysqli_query($myConnection, "set names 'utf8'");
 						  
-					$sqlCommand="SELECT z.IDuser, k.IDkol, k.nazwakol FROM zapisykol z JOIN kolonie k ON z.IDkol=k.IDkol WHERE z.IDuser = '".mysqli_real_escape_string($myConnection, $_SESSION['id'])."'";
+					$sqlCommand="SELECT nazwakol FROM kolonie WHERE org='".mysqli_real_escape_string($myConnection, $_SESSION['org'])."'";
 					$query=mysqli_query($myConnection, $sqlCommand);        
 					while($row = mysqli_fetch_array($query)){ 
-						$buttons = '<a href="toggleUczK.php?iduser='.$row['IDuser'].'&idkol='.$row['IDkol'].'" class="btn btn-xs btn-danger">Wypisz</a>';
+						$buttons = '<a href="toggleUczK.php?iduser='.$row['IDuser'].'&idkol='.$row['IDkol'].'" class="btn btn-xs btn-default">Zarządzaj</a>';
 					?>
 					<li class="list-group-item"><?php echo $row['nazwakol']; ?> <div class="pull-right"><?php echo $buttons; ?></div></li>
 				  <?php  } ?>
@@ -854,11 +860,46 @@ function getPosts()
               </div>
 			  
 			  <!---Dodaj kolonie---> 
-			  <div class="dodajkolonie">
+			 
 			
-			<label><h3>Dodaj kolonie</h3></label></div>
+			<label><h3>Dodaj wyjazd</h3></label>
 			  
-			  			  
+			  			  <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+              <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="heading19">
+                  <h4 class="panel-title">
+                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse19" aria-expanded="true" aria-controls="collapse19">
+                      Dodaj kolonie 
+                    </a>
+                  </h4>
+                </div>
+                <div id="collapse19" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading19">
+                  			  
+				  <div id="dodajwyjazd">
+
+<form id="form" method="post" action="log.php"> 
+
+<br />
+<input type="text" name="nazwakolonii" placeholder="Nazwa kolonii" style="width:100%"/><br />
+<br />
+<input type="text" name="organizator" placeholder="Organizator" style="width:100%"/><br />
+<br />
+<input type="text" name="datapocz" placeholder="Data początkowa" style="width:100%;"/><br />
+<br />
+<input type="text" name="datakon" placeholder="Data końcowa" style="width:100%;"/><br />
+<br />
+<textarea name="opis" cols="30" rows="10" placeholder="Opis kolonii" style="width:100%;"></textarea><br />
+<input type="submit" name="submit" style="width:100%; " value="Dodaj kolonie"/> <br />
+<input type="reset" style="width:100%; " value="Wyczyść"/><br />
+</form>
+				  
+                </div>              
+				 
+			</div>			
+		  </div>
+			 
+			  
+			  </div>
 			  
 			  
 			  			  
@@ -893,7 +934,7 @@ function getPosts()
 			} 
 			else if (!isset($_SESSION['admin'])) {?>
             <div class='tyt'></div>
-			<h3 class="text-center text-uppercase"><title="zaloguj">Zaloguj się na swoje konto</title></h3>	
+			<h5 class="text-center text-uppercase"><title="zaloguj">Zaloguj się na swoje konto</title></h4>	
             <?php if (isset($_SESSION['register_success'])) { ?>
               <div class="form-group">
                 <label>Konto zostało utworzone, możesz się teraz zalogować</label>
