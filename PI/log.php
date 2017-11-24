@@ -370,7 +370,7 @@ function getPosts()
                                    <input type="hidden" name="IDkol" value="<?php echo "$row[IDkol]";?>">                                  
                                    <input type="hidden" name="aktywnoscKol" value="<?php echo "$row[aktywnoscKol]";?>">
                                    <?php if("$row[aktywnoscKol]"==1) { ?>
-                                   <input class="btn btn-danger" type="submit" name="delete" value="Usuń kolonie">
+                                   <input class="btn btn-danger" type="submit" name="delete" value="Zarchiwizuj kolonie">
                                    <?php } else { ?>
                                    <input class="btn btn-success" type="submit" name="update" value="Zaakceptuj kolonie">
 								    <input class="btn btn-danger" type="submit" name="delete" value="Usuń kolonie">
@@ -391,8 +391,8 @@ function getPosts()
                 <div class="panel-heading" role="tab" id="heading11">
                   <h4 class="panel-title">
                     <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse11" aria-expanded="true" aria-controls="collapse11">
-                      Dodaj kolonie 
                     </a>
+                      Dodaj kolonie 
                   </h4>
                 </div>
                 <div id="collapse11" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading11">
@@ -850,6 +850,8 @@ function getPosts()
 					$query=mysqli_query($myConnection, $sqlCommand);        
 					while($row = mysqli_fetch_array($query)){ 
 						$buttons = '<a href="toggleUczK.php?iduser='.$row['IDuser'].'&idkol='.$row['IDkol'].'" class="btn btn-xs btn-default">Zarządzaj</a>';
+						
+
 					?>
 					<li class="list-group-item"><?php echo $row['nazwakol']; ?> <div class="pull-right"><?php echo $buttons; ?></div></li>
 				  <?php  } ?>
