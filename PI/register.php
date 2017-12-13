@@ -43,7 +43,7 @@ session_start();
 		<div class="container">
 			<div class="header-gora col-xs-12">
 				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 logo">
-			        <a href="#" title="">
+			        <a href="index.php" title="">
 						<img class="img-responsive" src="img/logo.png" style="margin: 0px auto;">
 					</a>
 	                <h1>Kolonie i obozy językowe </h1>
@@ -52,7 +52,19 @@ session_start();
 					    <a href="register.php" class="rejestracja text-uppercase btn btn-outline" title="zarejestruj sie">Zarejestruj się</a>
 	                </div>
 	                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 login">
-						<a href="log.php" class="logowanie text-uppercase btn btn-outline" title="Zaloguj się">Zaloguj się</a>
+					<?php if (isset($_SESSION['admin']) && $_SESSION['admin']) { ?>
+					        <li style="list-style-type: none;"><a href="log.php" class="logowanie text-uppercase btn btn-outline" title="panel">Panel administratora</a></li> 
+							<p> Witaj admin! | <a href="logout.php">Wyloguj się!</a> | </p>
+																				
+   					        <?php } else if (isset($_SESSION['admin']) && !$_SESSION['admin']) { ?>
+					        <li style="list-style-type: none;"><a href="log.php" class="logowanie text-uppercase btn btn-outline" title="pane2">Twój profil</a></li>   
+							<p> Witaj <?php echo $_SESSION['imie'].' '.$_SESSION['nazwisko']; ?>! | <a href="logout.php">Wyloguj się!</a> | </p>
+                            <?php } else { ?>
+					        <li style="list-style-type: none;"><a href="log.php" class="logowanie text-uppercase btn btn-outline" title="Zaloguj się">Zaloguj się</a></li>
+							
+							
+                            <?php } ?>
+								
 					</div>		
 							
 			</div>
@@ -117,7 +129,7 @@ session_start();
 	   <div id="myCarousel" class="carousel slide" data-ride="carousel">
 			<ol class="carousel-indicators">
 				<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-				<li data-target="#myCarousel" data-slide-to="1"></li>
+				
 			</ol> 
 			 
 			<div class="carousel-inner" role="listbox">
@@ -125,19 +137,10 @@ session_start();
 					<img src="img/nag11.png" alt="" style="margin: 0px auto;">
 				</div> 
 				
-				<div class="carousel-item">
-				<img src="img/nag1.2.png" alt="" style="margin: 0px auto;">
-				</div> 
+				
 				
 			</div> 			
-				<a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-				<span class="icon-prev" aria-hidden="true"></span>
-				<span class="sr-only">Poprzedni</span>
-			</a>
-			<a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-				<span class="icon-next" aria-hidden="true"></span>
-				<span class="sr-only">Next</span>
-			</a>
+			
 		</div>
 	</div>
 </div><!-- slider -->
@@ -255,19 +258,25 @@ session_start();
 					<ul id="menu-gorne-menu-1" class="menu">
 						<li class="menu-item2 menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-22">
 									
-							<a href="." title="Strona główna">Strona główna</a>
+							<a href="index.php" title="Strona główna">Strona główna</a>
 						</li>
 						<li class="menu-item2 menu-item-type-post_type menu-item-object-page menu-item-47">
-							<a href="." title="O nas">O nas</a>
+							<a href="onas.php" title="O nas">O nas</a>
 						</li>
 						<li class="menu-item2 menu-item-type-post_type menu-item-object-page menu-item-48">
-							<a href="." title="Oferta">Oferta</a>
+							<a href="kolonie.php" title="Kolonie">Kolonie</a>
+						</li>
+						<li class="menu-item2 menu-item-type-post_type menu-item-object-page menu-item-48">
+							<a href="polkolonie.php" title="półkolonie">Półkolonie</a>
+						</li>
+						<li class="menu-item2 menu-item-type-post_type menu-item-object-page menu-item-48">
+							<a href="obozy.php" title="Obozy">Obozy językowe</a>
 						</li>
 						<li class="menu-item2 menu-item-type-post_type menu-item-object-page menu-item-49">
-							<a href="." title="Galeria">Galeria</a>
+							<a href="galeria.php" title="Galeria">Galeria</a>
 						</li>
 						<li class="menu-item2 menu-item-type-post_type menu-item-object-page menu-item-25">
-							<a href="." title="Kontakt">Kontakt</a>
+							<a href="kontakt.php" title="Kontakt">Kontakt</a>
 						</li>
 						</ul>
 					</div>
@@ -281,6 +290,8 @@ session_start();
 					<p>al. W. Sikorskiego 54b, 35-650 Rzeszów</p>
 					<p>tel.
 					<a href="tel:+48178721000" title="Telefon"> +48 17 654 90 10</a>
+					<p>email:
+					<a href="centrumkolonii@gmail.com" title="Email">centrumkolonii@gmail.com</a>
 					</p>
 				</div>
 			</div>
@@ -290,11 +301,14 @@ session_start();
 							<a href="https://www.facebook.com/" title="">
 								<img src="img/fejs.png" class="img-responsive" style="margin: 0px auto;"height="30" width="50;">
 							</a>
-							<a href="https://twitter.com/" title="">
-								<img src="img/twitter.png" class="img-responsive" style="margin: 0px;" height="30" width="50;">
+							<a href="https://www.instagram.com" title="">
+								<img src="img/insta.png" class="img-responsive" style="margin: 0px auto;"height="30" width="50;">
 							</a>
 							<a href="https://www.youtube.com/" title="">
 								<img src="img/yt.png" class="img-responsive" style="margin: 0px auto;"height="30" width="50;">
+							</a>
+							<a href="https://twitter.com/" title="">
+								<img src="img/twitter.png" class="img-responsive" style="margin: 0px;" height="30" width="50;">
 							</a>
 							
 						</div>
