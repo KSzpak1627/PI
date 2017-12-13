@@ -49,7 +49,19 @@ session_start();
 					    <a href="register.php" class="rejestracja text-uppercase btn btn-outline" title="zarejestruj sie">Zarejestruj się</a>
 	                </div>
 	                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 login">
-						<a href="log.php" class="logowanie text-uppercase btn btn-outline" title="Zaloguj się">Zaloguj się</a>
+					<?php if (isset($_SESSION['admin']) && $_SESSION['admin']) { ?>
+					        <li style="list-style-type: none;"><a href="log.php" class="logowanie text-uppercase btn btn-outline" title="panel">Panel administratora</a></li> 
+							<p> Witaj admin! | <a href="logout.php">Wyloguj się!</a> | </p>
+																				
+   					        <?php } else if (isset($_SESSION['admin']) && !$_SESSION['admin']) { ?>
+					        <li style="list-style-type: none;"><a href="log.php" class="logowanie text-uppercase btn btn-outline" title="pane2">Twój profil</a></li>   
+							<p> Witaj <?php echo $_SESSION['imie'].' '.$_SESSION['nazwisko']; ?>! | <a href="logout.php">Wyloguj się!</a> | </p>
+                            <?php } else { ?>
+					        <li style="list-style-type: none;"><a href="log.php" class="logowanie text-uppercase btn btn-outline" title="Zaloguj się">Zaloguj się</a></li>
+							
+							
+                            <?php } ?>
+								
 					</div>		
 							
 			</div>
@@ -60,7 +72,7 @@ session_start();
 
 		<div id="menu-row" class="menu-row col-xs-12" style="top: 0px;">
 			<div class="container">
-
+<!---menu ---> 
 				<div class="menu navbar navbar-default col-lg-8 col-md-8 col-sm-8 col-xs-12 no-padding">
 					<div class="navbar-header">
 					</div>
@@ -107,9 +119,9 @@ session_start();
 		</div>
 	</div>		
 	
-</div><!-- koniec header -->
+</div><!-- koniec menu -->
 
-<div id="slider">
+<div id="slider"><!---slider ---> 
 	<div class="container">
 	   <div id="myCarousel" class="carousel slide" data-ride="carousel">
 						 
@@ -128,7 +140,7 @@ session_start();
 
 
 <div id="container" class="container">
-	
+	<!---tresc body---> 
 		
 		<div class="kont col-xs-12">
 				<div class="header col-xs-12 no-padding">
@@ -142,7 +154,7 @@ session_start();
 					
 										
 					
-				
+				<!---wyjazdy pobierane z bazy ---> 
 				<?php
             $myConnection= mysqli_connect("localhost","root","", "kolonie") or die ("could not connect to mysql"); 
 			if (isset($_GET['id'])) 
@@ -154,11 +166,62 @@ session_start();
 			while($row = mysqli_fetch_array($query)){ ?>
 					<div class='post-head'><?php echo $row['nazwakol'];?></div>
                     <div class='post-tre'><?php echo $row['opis'];?></div>
-					<div class='post-tre'><?php echo $row['dataPocz'];?></div>
-					<div class='post-tre'><?php echo $row['dataKon'];?></div>
+					
+					<!---wyjazdy pobierane z bazy  koniec ---> 
+					<!--informacja--->
+					<div class="title col-xs-12 no-padding">
+                     
+                      <h4 class="text-center">Aby zapisać się na wyjazd musisz się<a href="register.php" class="btn-link btn text-uppercase">« zarejestrować »</a></h4>
+                                      </div>
+									  <!--informacja koniec--->
+									  
+									    
+							<!--tabelka z dostępnymi turnusami - nie działa--->		  
+				<!-- <?php
+                            $myConnection= mysqli_connect("localhost","root","", "kolonie") or die ("could not connect to mysql"); 
+							$guery=mysqli_query($myConnection, "set names 'utf8'");
+                            $sqlCommand="SELECT * FROM turnusykol"; 
+                            $query=mysqli_query($myConnection, $sqlCommand); 
+							
+							
+							
+                             while($row = mysqli_fetch_array($query)){ ?>
+							 
+							 
+							 <div class="body col-xs-12">
+                      <table class="table table-striped">
+                      <thead>
+
+                                                <tr>
+                          <th scope="col">Nazwa</th>
+                          <th scope="col">Data Początkowa</th>
+                          <th scope="col">Data końcowa</th>  
+						<th scope="col">Opcje</th> 
+						  
+                        </tr>
+                                              </thead>
+                      <tbody>
+                                              <tr>
+											  
+                              <td><?php echo "$row[nazwa]";?></td>
+                              <td><?php echo "$row[datapocz]";?></td>
+                              <td><?php echo "$row[datakon]";?></td>  
+                              <td> <input class="btn btn-success" type="submit" name="update" value="Zapisz się"> </td>
+                          </tr>  
+                           
+                    </tbody>
+                  </table>
+                  </div>
+						 
+                      <?php } ?>	 --> 			  
+								<!--tabelka z dostępnymi turnusami - koniec--->		  
+								<!--lista osób na wyjezdzie--->		  
 			<?php
 			} 
+			
+						
 			if (isset($_SESSION['admin']) && $_SESSION['admin']) { ?>
+			
 			<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
               <div class="panel panel-default">
                 <div class="panel-heading" role="tab" id="headingOne">
@@ -193,8 +256,9 @@ session_start();
             <?php
 			}
 			?>
+			<!--lista osób na wyjezdzie--->	
 			
-			
+			<!--usuniecie koloni na stronie koloni--->	
 			
 			 <?php      $myConnection= mysqli_connect("localhost","root","", "kolonie") or die ("could not connect to mysql"); 
 			$guery=mysqli_query($myConnection, "set names 'utf8'");
@@ -212,7 +276,49 @@ session_start();
 
 			?>
 					<li class="list-group-item"><?php echo $kolonie[$row['IDkol']]; ?> <div class="pull-right"><?php echo $buttons; ?></div></li>
-			<?php  } ?>
+			<?php  } ?><!--usuniecie koloni na stronie koloni koniec--->	
+			
+			<!--edycja wyjazdu--->	
+			<label><h3>Edytuj wyjazd</h3></label>
+			  
+			  			  <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+              <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="heading19">
+                  <h4 class="panel-title">
+                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse19" aria-expanded="true" aria-controls="collapse19">
+                      Edytuj informacje o wyjeździe 
+                    </a>
+                  </h4>
+                </div>
+                <div id="collapse19" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading19">
+                  			  
+				  <div id="dodajwyjazd">
+
+<form id="form" method="post" action="kolonie.php"> 
+
+<br />
+<input type="text" name="nazwakolonii" placeholder="Nazwa kolonii" style="width:100%"/><br />
+<br />
+<input type="text" name="organizator" placeholder="Organizator" style="width:100%"/><br />
+<br />
+<input type="text" name="turnus" placeholder="Turnus" style="width:100%;"/><br />
+<br />
+<input type="text" name="datapocz" placeholder="Data początkowa" style="width:100%;"/><br />
+<br />
+<input type="text" name="datakon" placeholder="Data końcowa" style="width:100%;"/><br />
+<br />
+<textarea name="opis" cols="30" rows="10" placeholder="Opis kolonii" style="width:100%;"></textarea><br />
+<input type="submit" name="submit" style="width:100%; " value="Edytuj kolonie"/> <br />
+<input type="reset" style="width:100%; " value="Wyczyść"/><br />
+</form>
+				  
+                </div>              
+				 
+			</div>			
+		  </div>
+			 
+			  
+			  </div><!--edycja wyjazdu koniec--->	
 			
 			
 			
@@ -222,17 +328,6 @@ session_start();
               </div>
 			
 			
-			
-			
-			
-
-				
-				
-				
-					
-
-
-
 
 					</div>
 			</div>
