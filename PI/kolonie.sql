@@ -1,275 +1,434 @@
--- phpMyAdmin SQL Dump
--- version 4.6.5.2
--- https://www.phpmyadmin.net/
---
--- Host: 127.0.0.1
--- Czas generowania: 18 Lis 2017, 10:36
--- Wersja serwera: 10.1.21-MariaDB
--- Wersja PHP: 5.6.30
+<?php
+session_start();
+?>
 
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET time_zone = "+00:00";
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pl">
+<head>
+<meta http-equiv="content-type" content="text/html" charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kolonie, półkolonie i obozy językowe dla dzieci i młodzieży </title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
 
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+<script src='java-script.js'></script>
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<link rel='stylesheet' href='css-style.css' />
 
---
--- Baza danych: `kolonie`
---
 
--- --------------------------------------------------------
 
---
--- Struktura tabeli dla tabeli `kolonie`
---
 
-CREATE TABLE `kolonie` (
-  `IDkol` int(11) NOT NULL,
-  `IDorg` int(11) NOT NULL,
-  `nazwakol` text CHARACTER SET utf8 NOT NULL,
-  `org` varchar(255) NOT NULL,
-  `dataPocz` date NOT NULL,
-  `dataKon` date NOT NULL,
-  `opis` text CHARACTER SET utf8 NOT NULL,
-  `aktywnoscKol` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+<style>
+	@import url('https://fonts.googleapis.com/css?family=Comfortaa|Nothing+You+Could+Do')
+</style>
 
---
--- Zrzut danych tabeli `kolonie`
---
+</head>
 
-INSERT INTO `kolonie` (`IDkol`, `IDorg`, `nazwakol`, `org`, `dataPocz`, `dataKon`, `opis`, `aktywnoscKol`) VALUES
-(94, 0, 'Włochy - Narciarska podróż', 'FunClub', '0000-00-00', '0000-00-00', 'Lorem Ipsum jest tekstem stosowanym jako przykładowy wypełniacz w przemyśle poligraficznym. Został po raz pierwszy użyty w XV w. przez nieznanego drukarza do wypełnienia tekstem próbnej książki. Pięć wieków później zaczął być używany przemyśle elektronicznym, pozostając praktycznie niezmienionym. Spopularyzował się w latach 60. XX w. wraz z publikacją arkuszy Letrasetu, zawierających fragmenty Lorem Ipsum, a ostatnio z zawierającym różne wersje Lorem Ipsum oprogramowaniem przeznaczonym do realizacji druków na komputerach osobistych, jak Aldus PageMaker\r\n\r\n\r\n<br/>Czas trwania: <i>10 dni </i>\r\n<br/>Terminy turnusów: do wyboru przy rejestracji\r\n<br/>Program koloni: \r\n\r\n</br> <a href=\"galeria.php\" title=\"galeria\">Zapraszamy do galerii »</a></p>\r\n', 1),
-(96, 0, 'Rabka Zdrój - Wakacyjny Relax', 'FunClub', '2018-08-12', '2018-08-26', 'Lorem Ipsum jest tekstem stosowanym jako przykładowy wypełniacz w przemyśle poligraficznym. Został po raz pierwszy użyty w XV w. przez nieznanego drukarza do wypełnienia tekstem próbnej książki. Pięć wieków później zaczął być używany przemyśle elektronicznym, pozostając praktycznie niezmienionym. Spopularyzował się w latach 60. XX w. wraz z publikacją arkuszy Letrasetu, zawierających fragmenty Lorem Ipsum, a ostatnio z zawierającym różne wersje Lorem Ipsum oprogramowaniem przeznaczonym do realizacji druków na komputerach osobistych, jak Aldus PageMaker\r\n\r\n<br/>Czas trwania: <i>10 dni </i>\r\n<br/>Terminy turnusów: do wyboru przy rejestracji\r\n<br/>Program koloni: \r\n\r\n</br> <a href=\"galeria.php\" title=\"galeria\">Zapraszamy do galerii »</a></p>', 0),
-(97, 0, 'Kołobrzeg - Wakacyjny Relax', 'FunClub', '2018-07-22', '2018-08-05', 'Lorem Ipsum jest tekstem stosowanym jako przykładowy wypełniacz w przemyśle poligraficznym. Został po raz pierwszy użyty w XV w. przez nieznanego drukarza do wypełnienia tekstem próbnej książki. Pięć wieków później zaczął być używany przemyśle elektronicznym, pozostając praktycznie niezmienionym. Spopularyzował się w latach 60. XX w. wraz z publikacją arkuszy Letrasetu, zawierających fragmenty Lorem Ipsum, a ostatnio z zawierającym różne wersje Lorem Ipsum oprogramowaniem przeznaczonym do realizacji druków na komputerach osobistych, jak Aldus PageMaker\r\n\r\n<br/>Czas trwania: <i>10 dni </i>\r\n<br/>Terminy turnusów: do wyboru przy rejestracji\r\n<br/>Program koloni: \r\n\r\n</br> <a href=\"galeria.php\" title=\"galeria\">Zapraszamy do galerii »</a></p>', 0),
-(98, 0, 'Wisła - Zimowisko z survivalem dla dzieci ', 'FunClub', '2018-02-11', '2018-02-24', 'Zakopane - Zimowa stolica Polski, jest również niezwykle atrakcyjna w lecie. Piękne widoki, świeże powietrze, liczne szklaki turystyczne i wiele atrakcji dla turystów. Nowoczesny Aquapark, skocznie narciarskie.\r\n\r\nOśrodek kolonijny Ośrodek wypoczynkowy  położony jest w centrum Zakopanego, znajduje się w bezpiecznej i zacisznej części miasta, ok. 5 minut od głównej ulicy miasta Krupówek. Budynek trzy piętrowy, pokoje z balkonami, z których roztacza się widok na Tatry.\r\n\r\n<br/>Czas trwania: <i>14 dni </i>\r\n\r\n<br/>Czas trwania: <i>10 dni </i>\r\n<br/>Terminy turnusów: do wyboru przy rejestracji\r\n<br/>Program koloni: \r\n\r\n</br> <a href=\"galeria.php\" title=\"galeria\">Zapraszamy do galerii »</a></p>\r\n', 1),
-(99, 0, 'Świnoujście - Wakacyjny Relax', '', '2018-06-24', '2018-07-07', 'Lorem Ipsum jest tekstem stosowanym jako przykładowy wypełniacz w przemyśle poligraficznym. Został po raz pierwszy użyty w XV w. przez nieznanego drukarza do wypełnienia tekstem próbnej książki. Pięć wieków później zaczął być używany przemyśle elektronicznym, pozostając praktycznie niezmienionym. Spopularyzował się w latach 60. XX w. wraz z publikacją arkuszy Letrasetu, zawierających fragmenty Lorem Ipsum, a ostatnio z zawierającym różne wersje Lorem Ipsum oprogramowaniem przeznaczonym do realizacji druków na komputerach osobistych, jak Aldus PageMaker\r\n\r\n<br/>Czas trwania: <i>10 dni </i>\r\n<br/>Terminy turnusów: do wyboru przy rejestracji\r\n<br/>Program koloni: \r\n\r\n</br> <a href=\"galeria.php\" title=\"galeria\">Zapraszamy do galerii »</a></p>', 1);
+<body>
+<body class="kontakt">
 
--- --------------------------------------------------------
 
---
--- Struktura tabeli dla tabeli `obozy`
---
 
-CREATE TABLE `obozy` (
-  `IDobo` int(11) NOT NULL,
-  `nazwaobo` varchar(255) CHARACTER SET utf8 NOT NULL,
-  `org` varchar(255) NOT NULL,
-  `opis` text CHARACTER SET utf8 NOT NULL,
-  `aktywnoscObo` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+<div id="page">
 
---
--- Zrzut danych tabeli `obozy`
---
+<div id="content">
 
-INSERT INTO `obozy` (`IDobo`, `nazwaobo`, `org`, `opis`, `aktywnoscObo`) VALUES
-(1111, 'English for Youth - Rzeszów', 'EnglishClub', 'Lorem Ipsum jest tekstem stosowanym jako przykładowy wypełniacz w przemyśle poligraficznym. Został po raz pierwszy użyty w XV w. przez nieznanego drukarza do wypełnienia tekstem próbnej książki. Pięć wieków później zaczął być używany przemyśle elektronicznym, pozostając praktycznie niezmienionym. Spopularyzował się w latach 60. XX w. wraz z publikacją arkuszy Letrasetu, zawierających fragmenty Lorem Ipsum, a ostatnio z zawierającym różne wersje Lorem Ipsum oprogramowaniem przeznaczonym do realizacji druków na komputerach osobistych, jak Aldus PageMaker\r\n\r\n\r\n<br/>Czas trwania: <i>10 dni </i>\r\n<br/>Terminy turnusów: do wyboru przy rejestracji\r\n<br/>Program koloni: \r\n\r\n</br> <a href=\"galeria.php\" title=\"galeria\">Zapraszamy do galerii »</a></p>\r\n', 0),
-(1112, 'Rymanów Zdrój - English for kids', 'EnglishClub', 'Lorem Ipsum jest tekstem stosowanym jako przykładowy wypełniacz w przemyśle poligraficznym. Został po raz pierwszy użyty w XV w. przez nieznanego drukarza do wypełnienia tekstem próbnej książki. Pięć wieków później zaczął być używany przemyśle elektronicznym, pozostając praktycznie niezmienionym. Spopularyzował się w latach 60. XX w. wraz z publikacją arkuszy Letrasetu, zawierających fragmenty Lorem Ipsum, a ostatnio z zawierającym różne wersje Lorem Ipsum oprogramowaniem przeznaczonym do realizacji druków na komputerach osobistych, jak Aldus PageMaker\r\n\r\n\r\n<br/>Czas trwania: <i>10 dni </i>\r\n<br/>Terminy turnusów: do wyboru przy rejestracji\r\n<br/>Program koloni: \r\n\r\n</br> <a href=\"galeria.php\" title=\"galeria\">Zapraszamy do galerii »</a></p>\r\n', 1),
-(1113, 'Kamionka - English time', 'FunClub', 'Lorem Ipsum jest tekstem stosowanym jako przykładowy wypełniacz w przemyśle poligraficznym. Został po raz pierwszy użyty w XV w. przez nieznanego drukarza do wypełnienia tekstem próbnej książki. Pięć wieków później zaczął być używany przemyśle elektronicznym, pozostając praktycznie niezmienionym. Spopularyzował się w latach 60. XX w. wraz z publikacją arkuszy Letrasetu, zawierających fragmenty Lorem Ipsum, a ostatnio z zawierającym różne wersje Lorem Ipsum oprogramowaniem przeznaczonym do realizacji druków na komputerach osobistych, jak Aldus PageMaker\r\n\r\n\r\n<br/>Czas trwania: <i>10 dni </i>\r\n<br/>Terminy turnusów: do wyboru przy rejestracji\r\n<br/>Program koloni: \r\n\r\n</br> <a href=\"galeria.php\" title=\"galeria\">Zapraszamy do galerii »</a></p>\r\n', 1);
+<div id="header">
 
--- --------------------------------------------------------
+	<div class="panel">
+		<div class="container">
+			<div class="header-gora col-xs-12">
+				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 logo">
+			        <a href="#" title="">
+						<img class="img-responsive" src="img/logo.png" style="margin: 0px auto;">
+					</a>
+	                <h1>Kolonie i obozy językowe </h1>
+	            </div>
+					<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 register">
+					    <a href="register.php" class="rejestracja text-uppercase btn btn-outline" title="zarejestruj sie">Zarejestruj się</a>
+	                </div>
+	                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 login">
+					<?php if (isset($_SESSION['admin']) && $_SESSION['admin']) { ?>
+					        <li style="list-style-type: none;"><a href="log.php" class="logowanie text-uppercase btn btn-outline" title="panel">Panel administratora</a></li> 
+							<p> Witaj admin! | <a href="logout.php">Wyloguj się!</a> | </p>
+																				
+   					        <?php } else if (isset($_SESSION['admin']) && !$_SESSION['admin']) { ?>
+					        <li style="list-style-type: none;"><a href="log.php" class="logowanie text-uppercase btn btn-outline" title="pane2">Twój profil</a></li>   
+							<p> Witaj <?php echo $_SESSION['imie'].' '.$_SESSION['nazwisko']; ?>! | <a href="logout.php">Wyloguj się!</a> | </p>
+                            <?php } else { ?>
+					        <li style="list-style-type: none;"><a href="log.php" class="logowanie text-uppercase btn btn-outline" title="Zaloguj się">Zaloguj się</a></li>
+							
+							
+                            <?php } ?>
+								
+					</div>		
+							
+			</div>
+		</div>
+	</div><!-- panel koniec -->
 
---
--- Struktura tabeli dla tabeli `polkolonie`
---
+	<div class="container">
 
-CREATE TABLE `polkolonie` (
-  `IDpol` int(11) NOT NULL,
-  `nazwapol` varchar(255) CHARACTER SET utf8 NOT NULL,
-  `org` varchar(255) NOT NULL,
-  `opis` text NOT NULL,
-  `aktywnoscPol` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+		<div id="menu-row" class="menu-row col-xs-12" style="top: 0px;">
+			<div class="container">
+<!---menu ---> 
+				<div class="menu navbar navbar-default col-lg-8 col-md-8 col-sm-8 col-xs-12 no-padding">
+					<div class="navbar-header">
+					</div>
+					<div class="collapse navbar-collapse no-padding" id="collapse">
+						<div class="menu-gorne-menu-container">
+							<ul id="menu-gorne-menu" class="menu nav navbar-nav text-uppercase">
+								<li id="menu-item-2" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-22">
+									<a href="index.php" title="Strona główna">Strona główna</a>
+								</li>
+								<li id="menu-item-3" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3">
+									<a href="onas.php" title="O nas">O nas</a>
+								</li>
+								<li id="menu-item-4" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4">
+								<li class="nav-item dropdown">
+									<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Oferta ▼</a>
+									 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="kolonie.php">Kolonie               </a>
+          <a class="dropdown-item" href="polkolonie.php">Półkolonie</a>
+          <a class="dropdown-item" href="obozy.php">Obozy językowe</a>
+        </div>					
+		</li>
+		</li>
+								<li id="menu-item-5" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-49">
+									<a href="galeria.php" title="Galeria">Galeria</a>
+								</li>
+								<li id="menu-item-5" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-25">
+									<a href="kontakt.php" title="Kontakt">Kontakt</a>
+								</li>
+								
+								
+							</ul>
+						</div>
+					</div>
+				</div>
 
---
--- Zrzut danych tabeli `polkolonie`
---
+				<div class="navbar navbar-light bg-light justify-content-between col-lg-4 col-md-4 col-sm-4 col-xs-12">
+					<form class="form-inline">
+						<input class="form-control mr-sm-2" type="search" placeholder="Wpisz szukaną frazę" aria-label="search">
+						<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Wyszukaj</button>
+					</form>
+				</div>
 
-INSERT INTO `polkolonie` (`IDpol`, `nazwapol`, `org`, `opis`, `aktywnoscPol`) VALUES
-(997, 'Kraków - Smocza Jama', 'EnglishClub', 'Lorem Ipsum jest tekstem stosowanym jako przyk?adowy wype?niacz w przemy?le poligraficznym. Zosta? po raz pierwszy u?yty w XV w. przez nieznanego drukarza do wype?nienia tekstem próbnej ksi??ki. Pi?? wieków pó?niej zacz?? by? u?ywany przemy?le elektronicznym, pozostaj?c praktycznie niezmienionym. Spopularyzowa? si? w latach 60. XX w. wraz z publikacj? arkuszy Letrasetu, zawieraj?cych fragmenty Lorem Ipsum, a ostatnio z zawieraj?cym ró?ne wersje Lorem Ipsum oprogramowaniem przeznaczonym do realizacji druków na komputerach osobistych, jak Aldus PageMaker\r\n\r\n\r\n<br/>Czas trwania: <i>10 dni </i>\r\n<br/>Terminy turnusów: do wyboru przy rejestracji\r\n<br/>Program koloni: \r\n\r\n</br> <a href=\"galeria.php\" title=\"galeria\">Zapraszamy do galerii »</a></p>\r\n', 0),
-(998, 'Wrocław - Zabaw w mieście', 'FunClub', 'Lorem Ipsum jest tekstem stosowanym jako przyk?adowy wype?niacz w przemy?le poligraficznym. Zosta? po raz pierwszy u?yty w XV w. przez nieznanego drukarza do wype?nienia tekstem próbnej ksi??ki. Pi?? wieków pó?niej zacz?? by? u?ywany przemy?le elektronicznym, pozostaj?c praktycznie niezmienionym. Spopularyzowa? si? w latach 60. XX w. wraz z publikacj? arkuszy Letrasetu, zawieraj?cych fragmenty Lorem Ipsum, a ostatnio z zawieraj?cym ró?ne wersje Lorem Ipsum oprogramowaniem przeznaczonym do realizacji druków na komputerach osobistych, jak Aldus PageMaker\r\n\r\n\r\n<br/>Czas trwania: <i>10 dni </i>\r\n<br/>Terminy turnusów: do wyboru przy rejestracji\r\n<br/>Program koloni: \r\n\r\n</br> <a href=\"galeria.php\" title=\"galeria\">Zapraszamy do galerii »</a></p>\r\n', 1),
-(999, 'Kolorowe lato - Szczecin', '', 'Lorem Ipsum jest tekstem stosowanym jako przyk?adowy wype?niacz w przemy?le poligraficznym. Zosta? po raz pierwszy u?yty w XV w. przez nieznanego drukarza do wype?nienia tekstem próbnej ksi??ki. Pi?? wieków pó?niej zacz?? by? u?ywany przemy?le elektronicznym, pozostaj?c praktycznie niezmienionym. Spopularyzowa? si? w latach 60. XX w. wraz z publikacj? arkuszy Letrasetu, zawieraj?cych fragmenty Lorem Ipsum, a ostatnio z zawieraj?cym ró?ne wersje Lorem Ipsum oprogramowaniem przeznaczonym do realizacji druków na komputerach osobistych, jak Aldus PageMaker\r\n\r\n\r\n<br/>Czas trwania: <i>10 dni </i>\r\n<br/>Terminy turnusów: do wyboru przy rejestracji\r\n<br/>Program koloni: \r\n\r\n</br> <a href=\"galeria.php\" title=\"galeria\">Zapraszamy do galerii »</a></p>\r\n', 0),
-(1000, 'Zima w Krakowie', '', 'Lorem Ipsum jest tekstem stosowanym jako przyk?adowy wype?niacz w przemy?le poligraficznym. Zosta? po raz pierwszy u?yty w XV w. przez nieznanego drukarza do wype?nienia tekstem próbnej ksi??ki. Pi?? wieków pó?niej zacz?? by? u?ywany przemy?le elektronicznym, pozostaj?c praktycznie niezmienionym. Spopularyzowa? si? w latach 60. XX w. wraz z publikacj? arkuszy Letrasetu, zawieraj?cych fragmenty Lorem Ipsum, a ostatnio z zawieraj?cym ró?ne wersje Lorem Ipsum oprogramowaniem przeznaczonym do realizacji druków na komputerach osobistych, jak Aldus PageMaker\r\n\r\n\r\n<br/>Czas trwania: <i>10 dni </i>\r\n<br/>Terminy turnusów: do wyboru przy rejestracji\r\n<br/>Program koloni: \r\n\r\n</br> <a href=\"galeria.php\" title=\"galeria\">Zapraszamy do galerii »</a></p>\r\n', 1);
+			</div>
+		</div>
+	</div>		
+	
+</div><!-- koniec menu -->
 
--- --------------------------------------------------------
+<div id="slider"><!---slider ---> 
+	<div class="container">
+	   <div id="myCarousel" class="carousel slide" data-ride="carousel">
+						 
+			<div class="carousel-inner" role="listbox">
+				<div class="carousel-item active">
+					<img src="img/nag-oferta.jpg" alt="" style="margin: 0px auto;">
+				</div> 
+				
+				
+				
+			</div> 			
+				
+		</div>
+	</div>
+</div><!-- slider -->
 
---
--- Struktura tabeli dla tabeli `user`
---
 
-CREATE TABLE `user` (
-  `IDuser` int(11) NOT NULL,
-  `nick` text CHARACTER SET utf8 NOT NULL,
-  `email` varchar(255) NOT NULL,
-  `password` varchar(255) CHARACTER SET utf8 NOT NULL,
-  `imie` varchar(255) CHARACTER SET utf8 NOT NULL,
-  `nazwisko` varchar(255) CHARACTER SET utf8 NOT NULL,
-  `organizator` int(11) NOT NULL,
-  `uzytkownik` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+<div id="container" class="container">
+	<!---tresc body---> 
+		
+		<div class="kont col-xs-12">
+				<div class="header col-xs-12 no-padding">
+				<div id="tyt1">
+		            <h2 class="text-center text-uppercase">Oferta</h2></div>
+		        </div>
+				<div class="blog-wpis col-xs-12">
+				
+				<div class="title col-xs-12 no-padding">
+		            <h3 class="text-center">Kolonie - oferta 2018</h3></div>
+					
+										
+					
+				<!---wyjazdy pobierane z bazy ---> 
+				<?php
+            $myConnection= mysqli_connect("localhost","root","", "kolonie") or die ("could not connect to mysql"); 
+			if (isset($_GET['id'])) 
+				$sqlCommand="SELECT * FROM kolonie WHERE IDkol='".mysqli_real_escape_string($myConnection, $_GET['id'])."'";			
+			else		
+				$sqlCommand="SELECT * FROM kolonie";
+			$guery=mysqli_query($myConnection, "set names 'utf8'");
+			$query=mysqli_query($myConnection, $sqlCommand);        
+			while($row = mysqli_fetch_array($query)){ ?>
+					<div class='post-head'><?php echo $row['nazwakol'];?></div>
+                    <div class='post-tre'><?php echo $row['opis'];?></div>
+					
+					<!---wyjazdy pobierane z bazy  koniec ---> 
+					<!--informacja--->
+					<div class="title col-xs-12 no-padding">
+                     
+                      <h4 class="text-center">Aby zapisać się na wyjazd musisz się<a href="register.php" class="btn-link btn text-uppercase">« zarejestrować »</a></h4>
+                                      </div>
+									  <!--informacja koniec--->
+									  
+									    
+							<!--tabelka z dostępnymi turnusami - nie działa--->		  
+				<!-- <?php
+                            $myConnection= mysqli_connect("localhost","root","", "kolonie") or die ("could not connect to mysql"); 
+							$guery=mysqli_query($myConnection, "set names 'utf8'");
+                            $sqlCommand="SELECT * FROM turnusykol"; 
+                            $query=mysqli_query($myConnection, $sqlCommand); 
+							
+							
+							
+                             while($row = mysqli_fetch_array($query)){ ?>
+							 
+							 
+							 <div class="body col-xs-12">
+                      <table class="table table-striped">
+                      <thead>
 
---
--- Zrzut danych tabeli `user`
---
+                                                <tr>
+                          <th scope="col">Nazwa</th>
+                          <th scope="col">Data Początkowa</th>
+                          <th scope="col">Data końcowa</th>  
+						<th scope="col">Opcje</th> 
+						  
+                        </tr>
+                                              </thead>
+                      <tbody>
+                                              <tr>
+											  
+                              <td><?php echo "$row[nazwa]";?></td>
+                              <td><?php echo "$row[datapocz]";?></td>
+                              <td><?php echo "$row[datakon]";?></td>  
+                              <td> <input class="btn btn-success" type="submit" name="update" value="Zapisz się"> </td>
+                          </tr>  
+                           
+                    </tbody>
+                  </table>
+                  </div>
+						 
+                      <?php } ?>	 --> 			  
+								<!--tabelka z dostępnymi turnusami - koniec--->		  
+								<!--lista osób na wyjezdzie--->		  
+			<?php
+			} 
+			
+						
+			if (isset($_SESSION['admin']) && $_SESSION['admin']) { ?>
+			
+			<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+              <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingOne">
+                  <h4 class="panel-title">
+                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                      Lista zapisanych osób
+                    </a>
+                  </h4>
+                </div>
+                <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                  <ul class="list-group">
+            <?php      $myConnection= mysqli_connect("localhost","root","", "kolonie") or die ("could not connect to mysql"); 
+			$guery=mysqli_query($myConnection, "set names 'utf8'");
+			$sqlCommand="SELECT * FROM user";
+			$user = array();
+			$query=mysqli_query($myConnection, $sqlCommand);        
+			while($row = mysqli_fetch_array($query)){
+				$user[$row['IDuser']] = $row['imie'].' '.$row['nazwisko'].' - '.$row['nick'];
+			}			
+			
+			$sqlCommand="SELECT * FROM zapisykol WHERE IDkol = '".mysqli_real_escape_string($myConnection, $_GET['id'])."'";
+			$query=mysqli_query($myConnection, $sqlCommand);        
+			while($row = mysqli_fetch_array($query)){ 
+				$buttons = '<a href="toggleUczK.php?iduser='.$row['IDuser'].'&idkol='.$row['IDkol'].'" class="btn btn-xs btn-danger">Wypisz</a>';
+			?>
+					<li class="list-group-item"><?php echo $user[$row['IDuser']]; ?> <div class="pull-right"><?php echo $buttons; ?></div></li>
+			<?php  } ?>
+                    </ul>
+                </div>
+              </div>
+              </div>
+            <?php
+			}
+			?>
+			<!--lista osób na wyjezdzie--->	
+			
+			<!--usuniecie koloni na stronie koloni--->	
+			
+			 <?php      $myConnection= mysqli_connect("localhost","root","", "kolonie") or die ("could not connect to mysql"); 
+			$guery=mysqli_query($myConnection, "set names 'utf8'");
+			$sqlCommand="SELECT * FROM kolonie";
+			$user = array();
+			$query=mysqli_query($myConnection, $sqlCommand);        
+			while($row = mysqli_fetch_array($query)){
+				$kolonie[$row['IDkol']] = $row['nazwakol'].' '.$row['org'];
+			}			
+			
+			$sqlCommand="SELECT * FROM kolonie WHERE IDkol = '".mysqli_real_escape_string($myConnection, $_GET['id'])."'";
+			$query=mysqli_query($myConnection, $sqlCommand);        
+			while($row = mysqli_fetch_array($query)){ 
+				$buttons = '<a href="toggleKolUp.php?idkol='.$row['IDkol'].'" class="btn btn-xs btn-danger">Usuń kolonie</a>';
 
-INSERT INTO `user` (`IDuser`, `nick`, `email`, `password`, `imie`, `nazwisko`, `organizator`, `uzytkownik`) VALUES
-(1, 'Lola', 'admin@gmail.com', '*23AE809DDACAF96AF0FD78ED04B6A265E05AA257', 'Lola', 'Nowak', 0, 1),
-(2, 'MBura', 'm.bura@op.pl', '*2731A025422CD12BB0DE48DE77142CD39AC1F0E7', 'Magda', 'Bura', 0, 1),
-(3, 'Nowaczek', 'nowaczek.r@op.pl', '*23AE809DDACAF96AF0FD78ED04B6A265E05AA257', 'Renata', 'Nowak', 0, 1),
-(4, 'AnnaKot', 'akot123@wp.pl', '*A4B6157319038724E3560894F7F932C8886EBFCF', 'Anna', 'Kot', 0, 1),
-(6, 'MPanda', 'mpanda@wp.pl', '*23AE809DDACAF96AF0FD78ED04B6A265E05AA257', 'Monika', 'Panda', 1, 0),
-(7, 'FunClub', 'funclub@op.pl', '*23AE809DDACAF96AF0FD78ED04B6A265E05AA257', 'FunClub ', 'Agnieszka Bura', 1, 0),
-(8, 'Lena11', 'lena11@wp.pl', '*23AE809DDACAF96AF0FD78ED04B6A265E05AA257', 'Lena', 'Kowalska', 1, 0),
-(9, 'Wisnia', 'mwisniewska@op.pl', '*23AE809DDACAF96AF0FD78ED04B6A265E05AA257', 'Monika', 'Wiśniewska', 0, 1),
-(10, 'admin', 'admin@gmail.com', '*23AE809DDACAF96AF0FD78ED04B6A265E05AA257', 'admin', 'admin', 0, 0);
+			?>
+					<li class="list-group-item"><?php echo $kolonie[$row['IDkol']]; ?> <div class="pull-right"><?php echo $buttons; ?></div></li>
+			<?php  } ?><!--usuniecie koloni na stronie koloni koniec--->	
+			
+			<!--edycja wyjazdu--->	
+			<label><h3>Edytuj wyjazd</h3></label>
+			  
+			  			  <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+              <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="heading19">
+                  <h4 class="panel-title">
+                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse19" aria-expanded="true" aria-controls="collapse19">
+                      Edytuj informacje o wyjeździe 
+                    </a>
+                  </h4>
+                </div>
+                <div id="collapse19" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading19">
+                  			  
+				  <div id="dodajwyjazd">
 
--- --------------------------------------------------------
+<form id="form" method="post" action="kolonie.php"> 
 
---
--- Struktura tabeli dla tabeli `zapisykol`
---
+<br />
+<input type="text" name="nazwakolonii" placeholder="Nazwa kolonii" style="width:100%"/><br />
+<br />
+<input type="text" name="organizator" placeholder="Organizator" style="width:100%"/><br />
+<br />
+<input type="text" name="turnus" placeholder="Turnus" style="width:100%;"/><br />
+<br />
+<input type="text" name="datapocz" placeholder="Data początkowa" style="width:100%;"/><br />
+<br />
+<input type="text" name="datakon" placeholder="Data końcowa" style="width:100%;"/><br />
+<br />
+<textarea name="opis" cols="30" rows="10" placeholder="Opis kolonii" style="width:100%;"></textarea><br />
+<input type="submit" name="submit" style="width:100%; " value="Edytuj kolonie"/> <br />
+<input type="reset" style="width:100%; " value="Wyczyść"/><br />
+</form>
+				  
+                </div>              
+				 
+			</div>			
+		  </div>
+			 
+			  
+			  </div><!--edycja wyjazdu koniec--->	
+			
+			
+			
+                  
+                </div>
+              </div>
+              </div>
+			
+			
 
-CREATE TABLE `zapisykol` (
-  `IDuser` int(11) NOT NULL,
-  `IDkol` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+					</div>
+			</div>
 
---
--- Zrzut danych tabeli `zapisykol`
---
 
-INSERT INTO `zapisykol` (`IDuser`, `IDkol`) VALUES
-(1, 99),
-(4, 99),
-(8, 94),
-(2, 97);
+</div>
+	
 
--- --------------------------------------------------------
+		
+<footer>
 
---
--- Struktura tabeli dla tabeli `zapisyobo`
---
+	<div class="container footer-content">
+	
+		<div class="widget-area-footer widget-area-footer-1 col-lg-4 col-md-4 col-sm-4 col-xs-12">	
+		<div id="footm">
+			<div id="nav_menu-4" class="widget widget_nav_menu">
+			
+				<h3 class="widget-title">Menu</h3>
+				<div class="menu-gorne-menu-container">
+					<ul id="menu-gorne-menu-1" class="menu">
+						<li class="menu-item2 menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-22">
+									
+							<a href="index.php" title="Strona główna">Strona główna</a>
+						</li>
+						<li class="menu-item2 menu-item-type-post_type menu-item-object-page menu-item-47">
+							<a href="onas.php" title="O nas">O nas</a>
+						</li>
+						<li class="menu-item2 menu-item-type-post_type menu-item-object-page menu-item-48">
+							<a href="kolonie.php" title="Kolonie">Kolonie</a>
+						</li>
+						<li class="menu-item2 menu-item-type-post_type menu-item-object-page menu-item-48">
+							<a href="polkolonie.php" title="półkolonie">Półkolonie</a>
+						</li>
+						<li class="menu-item2 menu-item-type-post_type menu-item-object-page menu-item-48">
+							<a href="obozy.php" title="Obozy">Obozy językowe</a>
+						</li>
+						<li class="menu-item2 menu-item-type-post_type menu-item-object-page menu-item-49">
+							<a href="galeria.php" title="Galeria">Galeria</a>
+						</li>
+						<li class="menu-item2 menu-item-type-post_type menu-item-object-page menu-item-25">
+							<a href="kontakt.php" title="Kontakt">Kontakt</a>
+						</li>
+						</ul>
+					</div>
+				</div> 
+			</div>
+			</div>
+			<div class="widget-area-footer widget-area-footer-2 col-lg-4 col-md-4 col-sm-4 col-xs-12">	
+				<div id="custom_html-6" class="widget_text widget widget_custom_html">
+					<h3 class="widget-title">Kontakt</h3>
+				<div class="textwidget custom-html-widget">
+					<p>Centrum Kolonii, półkolonii i obozów językowych dla dzieci i młodzieży</p>
+					<p>al. W. Sikorskiego 54b, 35-650 Rzeszów</p>
+					<p>tel.
+					<a href="tel:+48178721000" title="Telefon"> +48 17 654 90 10</a>
+					<p>email:
+					<a href="centrumkolonii@gmail.com" title="Email">centrumkolonii@gmail.com</a>
+					</p>
+				</div>
+			</div>
+		</div>
+		<div class="social col-xs-2 no-padding">                                      
+			            <div class="col-xs-12 no-padding">
+							<a href="https://www.facebook.com/" title="">
+								<img src="img/fejs.png" class="img-responsive" style="margin: 0px auto;"height="30" width="50;">
+							</a>
+							<a href="https://www.instagram.com" title="">
+								<img src="img/insta.png" class="img-responsive" style="margin: 0px auto;"height="30" width="50;">
+							</a>
+							<a href="https://www.youtube.com/" title="">
+								<img src="img/yt.png" class="img-responsive" style="margin: 0px auto;"height="30" width="50;">
+							</a>
+							<a href="https://twitter.com/" title="">
+								<img src="img/twitter.png" class="img-responsive" style="margin: 0px;" height="30" width="50;">
+							</a>
+							
+						</div>
+						</div>
+						
+						
+	</div>
+	<div class="clear"></div>
+	<div class="clear"></div>
+	<div class="col-xs-12 copyright">
+		© 
+		<a href="index.php" title="Kolonie, półkolonie i obozy językowe dla dzieci i młodzieży">Kolonie, półkolonie i obozy językowe dla dzieci i młodzieży</a> 
+	</div>
+	
+</div>
+</div>
+</footer>
 
-CREATE TABLE `zapisyobo` (
-  `IDuser` int(11) NOT NULL,
-  `IDobo` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Zrzut danych tabeli `zapisyobo`
---
 
-INSERT INTO `zapisyobo` (`IDuser`, `IDobo`) VALUES
-(4, 1111),
-(3, 1111),
-(2, 1113);
+</div> 
+</div>
 
--- --------------------------------------------------------
+  
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
---
--- Struktura tabeli dla tabeli `zapisypol`
---
+</body>
+</html>
 
-CREATE TABLE `zapisypol` (
-  `IDuser` int(11) NOT NULL,
-  `IDpol` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Zrzut danych tabeli `zapisypol`
---
-
-INSERT INTO `zapisypol` (`IDuser`, `IDpol`) VALUES
-(2, 1000),
-(4, 999);
-
---
--- Indeksy dla zrzutów tabel
---
-
---
--- Indexes for table `kolonie`
---
-ALTER TABLE `kolonie`
-  ADD PRIMARY KEY (`IDkol`);
-
---
--- Indexes for table `obozy`
---
-ALTER TABLE `obozy`
-  ADD PRIMARY KEY (`IDobo`);
-
---
--- Indexes for table `polkolonie`
---
-ALTER TABLE `polkolonie`
-  ADD PRIMARY KEY (`IDpol`);
-
---
--- Indexes for table `user`
---
-ALTER TABLE `user`
-  ADD PRIMARY KEY (`IDuser`);
-
---
--- Indexes for table `zapisykol`
---
-ALTER TABLE `zapisykol`
-  ADD KEY `IDuser` (`IDuser`),
-  ADD KEY `IDkol` (`IDkol`);
-
---
--- Indexes for table `zapisyobo`
---
-ALTER TABLE `zapisyobo`
-  ADD KEY `IDuser` (`IDuser`),
-  ADD KEY `IDobo` (`IDobo`);
-
---
--- Indexes for table `zapisypol`
---
-ALTER TABLE `zapisypol`
-  ADD KEY `IDuser` (`IDuser`),
-  ADD KEY `IDpol` (`IDpol`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT dla tabeli `user`
---
-ALTER TABLE `user`
-  MODIFY `IDuser` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
---
--- Ograniczenia dla zrzutów tabel
---
-
---
--- Ograniczenia dla tabeli `zapisykol`
---
-ALTER TABLE `zapisykol`
-  ADD CONSTRAINT `zapisykol_ibfk_1` FOREIGN KEY (`IDuser`) REFERENCES `user` (`IDuser`),
-  ADD CONSTRAINT `zapisykol_ibfk_2` FOREIGN KEY (`IDkol`) REFERENCES `kolonie` (`IDkol`);
-
---
--- Ograniczenia dla tabeli `zapisyobo`
---
-ALTER TABLE `zapisyobo`
-  ADD CONSTRAINT `zapisyobo_ibfk_1` FOREIGN KEY (`IDuser`) REFERENCES `user` (`IDuser`),
-  ADD CONSTRAINT `zapisyobo_ibfk_2` FOREIGN KEY (`IDobo`) REFERENCES `obozy` (`IDobo`);
-
---
--- Ograniczenia dla tabeli `zapisypol`
---
-ALTER TABLE `zapisypol`
-  ADD CONSTRAINT `zapisypol_ibfk_1` FOREIGN KEY (`IDuser`) REFERENCES `user` (`IDuser`),
-  ADD CONSTRAINT `zapisypol_ibfk_2` FOREIGN KEY (`IDpol`) REFERENCES `polkolonie` (`IDpol`);
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
