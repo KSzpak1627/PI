@@ -45,8 +45,20 @@ session_start();
 					<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 register">
 					    <a href="register.php" class="rejestracja text-uppercase btn btn-outline" title="zarejestruj sie">Zarejestruj się</a>
 	                </div>
-	                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 login">
-						<a href="log.php" class="logowanie text-uppercase btn btn-outline" title="Zaloguj się">Zaloguj się</a>
+	                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 login">
+					<?php if (isset($_SESSION['admin']) && $_SESSION['admin']) { ?>
+					        <li style="list-style-type: none;"><a href="log.php" class="logowanie text-uppercase btn btn-outline" title="panel">Panel administratora</a></li> 
+							<p> Witaj admin! | <a href="logout.php">Wyloguj się!</a> | </p>
+																				
+   					        <?php } else if (isset($_SESSION['admin']) && !$_SESSION['admin']) { ?>
+					        <li style="list-style-type: none;"><a href="log.php" class="logowanie text-uppercase btn btn-outline" title="pane2">Twój profil</a></li>   
+							<p> Witaj <?php echo $_SESSION['imie'].' '.$_SESSION['nazwisko']; ?>! | <a href="logout.php">Wyloguj się!</a> | </p>
+                            <?php } else { ?>
+					        <li style="list-style-type: none;"><a href="log.php" class="logowanie text-uppercase btn btn-outline" title="Zaloguj się">Zaloguj się</a></li>
+							
+							
+                            <?php } ?>
+								
 					</div>		
 							
 			</div>
@@ -54,7 +66,7 @@ session_start();
 	</div><!-- panel koniec -->
 
 	<div class="container">
-
+<!-- menu -->
 		<div id="menu-row" class="menu-row col-xs-12" style="top: 0px;">
 			<div class="container">
 
@@ -103,9 +115,9 @@ session_start();
 			</div>
 		</div>
 	</div>		
-	
+<!-- menu koniec -->	
 </div><!-- koniec header -->
-
+<!-- karuzela -->
 <div id="slider">
 	<div class="container">
 	   <div id="myCarousel" class="carousel slide" data-ride="carousel">
@@ -134,9 +146,9 @@ session_start();
 			</a>
 		</div>
 	</div>
-</div><!-- slider -->
+</div><!-- karuzela koniec -->
 
-
+<!-- lewa kolumna linki i baner -->
 <div id="container" class="container">
 	<div class="left-side col-lg-3 col-md-3 col-sm-4 col-xs-12 no-padding">
 		<div class="ostatnie-turnusy col-xs-12 no-padding">
@@ -193,9 +205,8 @@ session_start();
 				</div>
 			</div>
 			
-			
-			
-	</div>
+	</div> <!-- lewa kolumna linki + baner koniec -->
+	<!-- posty treść-->
 	<div class="right-side col-lg-9 col-md-9 col-sm-8 col-xs-12 no-padding">	
 		<div class="aktualnosci col-xs-12">
 				<div class="header col-xs-12 no-padding">
@@ -272,11 +283,11 @@ session_start();
 
 					</div>
 			</div>
-</div>
+</div> 	<!-- posty treść koniec-->
 
 </div>
 	
-
+	<!-- stopka-->
 		
 <footer>
 
