@@ -47,8 +47,20 @@ session_start();
 					<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 register">
 					    <a href="register.php" class="rejestracja text-uppercase btn btn-outline" title="zarejestruj sie">Zarejestruj się</a>
 	                </div>
-	                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 login">
-						<a href="log.php" class="logowanie text-uppercase btn btn-outline" title="Zaloguj się">Zaloguj się</a>
+	               <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 login">
+					<?php if (isset($_SESSION['admin']) && $_SESSION['admin']) { ?>
+					        <li style="list-style-type: none;"><a href="log.php" class="logowanie text-uppercase btn btn-outline" title="panel">Panel administratora</a></li> 
+							<p> Witaj admin! | <a href="logout.php">Wyloguj się!</a> | </p>
+																				
+   					        <?php } else if (isset($_SESSION['admin']) && !$_SESSION['admin']) { ?>
+					        <li style="list-style-type: none;"><a href="log.php" class="logowanie text-uppercase btn btn-outline" title="pane2">Twój profil</a></li>   
+							<p> Witaj <?php echo $_SESSION['imie'].' '.$_SESSION['nazwisko']; ?>! | <a href="logout.php">Wyloguj się!</a> | </p>
+                            <?php } else { ?>
+					        <li style="list-style-type: none;"><a href="log.php" class="logowanie text-uppercase btn btn-outline" title="Zaloguj się">Zaloguj się</a></li>
+							
+							
+                            <?php } ?>
+								
 					</div>		
 							
 			</div>
