@@ -278,47 +278,7 @@ session_start();
 					<li class="list-group-item"><?php echo $kolonie[$row['IDkol']]; ?> <div class="pull-right"><?php echo $buttons; ?></div></li>
 			<?php  } ?><!--usuniecie koloni na stronie koloni koniec--->	
 			
-			<!--edycja wyjazdu--->	
-			<label><h3>Edytuj wyjazd</h3></label>
-			  
-			  			  <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-              <div class="panel panel-default">
-                <div class="panel-heading" role="tab" id="heading19">
-                  <h4 class="panel-title">
-                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse19" aria-expanded="true" aria-controls="collapse19">
-                      Edytuj informacje o wyjeździe 
-                    </a>
-                  </h4>
-                </div>
-                <div id="collapse19" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading19">
-                  			  
-				  <div id="dodajwyjazd">
-
-<form id="form" method="post" action="kolonie.php"> 
-
-<br />
-<input type="text" name="nazwakolonii" placeholder="Nazwa kolonii" style="width:100%"/><br />
-<br />
-<input type="text" name="organizator" placeholder="Organizator" style="width:100%"/><br />
-<br />
-<input type="text" name="turnus" placeholder="Turnus" style="width:100%;"/><br />
-<br />
-<input type="text" name="datapocz" placeholder="Data początkowa" style="width:100%;"/><br />
-<br />
-<input type="text" name="datakon" placeholder="Data końcowa" style="width:100%;"/><br />
-<br />
-<textarea name="opis" cols="30" rows="10" placeholder="Opis kolonii" style="width:100%;"></textarea><br />
-<input type="submit" name="submit" style="width:100%; " value="Edytuj kolonie"/> <br />
-<input type="reset" style="width:100%; " value="Wyczyść"/><br />
-</form>
-				  
-                </div>              
-				 
-			</div>			
-		  </div>
-			 
-			  
-			  </div><!--edycja wyjazdu koniec--->	
+			
 			
 			
 			
